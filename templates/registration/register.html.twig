@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div style="max-width: 400px; margin: 4rem auto;">
+    <div class="card">
+        <h1 style="text-align: center; margin-bottom: 2rem;">Create Account</h1>
+        
+        <form method="post">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
+
+            <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: 1rem;">
+                Register
+            </button>
+            
+            <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">
+                Already have an account? <a href="{{ path('app_login') }}">Log in</a>
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

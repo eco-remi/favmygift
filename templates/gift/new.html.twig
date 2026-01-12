@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Gift{% endblock %}
+
+{% block body %}
+<div style="max-width: 600px; margin: 0 auto;">
+    <div class="card">
+        <h1>Add a Gift</h1>
+        
+        <div style="margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
+            <label>Auto-fill from URL</label>
+            <div class="flex">
+                <input type="url" id="scrape-url" placeholder="Paste product URL here...">
+                <button type="button" id="scrape-btn" class="btn btn-outline">Auto-Fill</button>
+            </div>
+            <p class="text-muted" style="font-size: 0.85rem;">Paste a link and click Auto-Fill to fetch details automatically.</p>
+        </div>
+
+        <form method="post">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="description">Description (Optional)</label>
+            <textarea name="description" id="description" rows="3"></textarea>
+
+            <label for="url">Product URL</label>
+            <input type="url" name="url" id="url">
+
+            <label for="imageUrl">Image URL</label>
+            <input type="url" name="imageUrl" id="imageUrl">
+            
+            <label for="priority">Priority (0-10)</label>
+            <input type="number" name="priority" id="priority" value="0" min="0" max="10">
+
+            <div class="flex justify-between mt-4">
+                <a href="{{ path('app_gift_index') }}" class="btn btn-outline">Cancel</a>
+                <button class="btn btn-primary" type="submit">Save Gift</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+document.getElementById('scrape-btn').addEventListener('click', async () => {
+    const url = document.getElementById('scrape-url').value;
+    const btn = document.getElementById('scrape-btn');
+    
+    if (!url) return;
+
+    btn.textContent = 'Loading...';
+    btn.disabled = true;
+
+    try {
+        const formData = new FormData();
+        formData.append('url', url);
+        formData.append('scrape', '1');
+
+        const response = await fetch('{{ path('app_gift_new') }}', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await response.json();
+        
+        if (data.title) document.getElementById('name').value = data.title;
+        if (data.description) document.getElementById('description').value = data.description;
+        if (data.image) document.getElementById('imageUrl').value = data.image;
+        document.getElementById('url').value = url;
+        
+    } catch (e) {
+        console.error(e);
+        alert('Failed to scrape URL');
+    } finally {
+        btn.textContent = 'Auto-Fill';
+        btn.disabled = false;
+    }
+});
+</script>
+{% endblock %}

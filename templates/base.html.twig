@@ -2,16 +2,138 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <title>{% block title %}GiftList{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🎁</text></svg>">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         {% block stylesheets %}
-        {% endblock %}
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+            <style>
+                :root {
+                    --primary: #6366f1;
+                    --primary-hover: #4f46e5;
+                    --bg: #0f172a;
+                    --surface: #1e293b;
+                    --text: #f8fafc;
+                    --text-muted: #94a3b8;
+                    --border: #334155;
+                    --success: #10b981;
+                    --danger: #ef4444;
+                }
+                body {
+                    font-family: 'Outfit', sans-serif;
+                    background-color: var(--bg);
+                    color: var(--text);
+                    margin: 0;
+                    line-height: 1.6;
+                }
+                a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
+                a:hover { color: var(--primary-hover); }
+                
+                .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+                
+                nav {
+                    background: var(--surface);
+                    border-bottom: 1px solid var(--border);
+                    padding: 1rem 2rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    position: sticky;
+                    top: 0;
+                    z-index: 50;
+                    backdrop-filter: blur(8px);
+                    background: rgba(30, 41, 59, 0.9);
+                }
+                .logo { font-size: 1.5rem; font-weight: 600; color: white; display: flex; align-items: center; gap: 0.5rem; }
+                .nav-links { display: flex; gap: 1.5rem; }
+                .btn {
+                    padding: 0.5rem 1rem;
+                    border-radius: 0.5rem;
+                    font-weight: 500;
+                    cursor: pointer;
+                    border: none;
+                    font-size: 0.95rem;
+                    transition: all 0.2s;
+                }
+                .btn-primary { background: var(--primary); color: white; }
+                .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+                .btn-outline { border: 1px solid var(--border); color: var(--text); background: transparent; }
+                .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+                .btn-danger { background: var(--danger); color: white; }
+                
+                .card {
+                    background: var(--surface);
+                    border-radius: 1rem;
+                    border: 1px solid var(--border);
+                    padding: 1.5rem;
+                    transition: transform 0.2s, box-shadow 0.2s;
+                }
+                .card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+                
+                input, textarea, select {
+                    background: var(--bg);
+                    border: 1px solid var(--border);
+                    color: var(--text);
+                    padding: 0.75rem;
+                    border-radius: 0.5rem;
+                    width: 100%;
+                    box-sizing: border-box;
+                    margin-bottom: 1rem;
+                    font-family: inherit;
+                }
+                input:focus, textarea:focus { outline: 2px solid var(--primary); border-color: transparent; }
+                
+                .grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+                
+                .flash { padding: 1rem; margin-bottom: 1rem; border-radius: 0.5rem; }
+                .flash-success { background: rgba(16, 185, 129, 0.2); color: #d1fae5; border: 1px solid var(--success); }
+                .flash-error { background: rgba(239, 68, 68, 0.2); color: #fee2e2; border: 1px solid var(--danger); }
+                
+                h1, h2, h3 { margin-top: 0; font-weight: 600; }
+                .text-muted { color: var(--text-muted); }
+                .flex { display: flex; gap: 1rem; align-items: center; }
+                .justify-between { justify-content: space-between; }
+                .mt-4 { margin-top: 1rem; }
+                .mb-4 { margin-bottom: 1rem; }
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+                .gift-image {
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                    border-radius: 0.5rem;
+                    margin-bottom: 1rem;
+                    background: var(--bg);
+                }
+            </style>
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <nav>
+            <a href="{{ path('app_home') }}" class="logo">🎁 GiftList</a>
+            <div class="nav-links">
+                {% if app.user %}
+                    <a href="{{ path('app_gift_index') }}" class="btn btn-outline">My List</a>
+                    <a href="{{ path('app_friend_index') }}" class="btn btn-outline">Friends</a>
+                    <a href="{{ path('app_logout') }}" class="btn btn-primary" style="background:#ef4444;">Logout</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="btn btn-outline">Login</a>
+                    <a href="{{ path('app_register') }}" class="btn btn-primary">Sign Up</a>
+                {% endif %}
+            </div>
+        </nav>
+
+        <div class="container">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="flash flash-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            {% block body %}{% endblock %}
+        </div>
     </body>
 </html>

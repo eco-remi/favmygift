@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Friends{% endblock %}
+
+{% block body %}
+    <h1>My Friends</h1>
+
+    <div class="grid" style="margin-bottom: 3rem;">
+        <div class="card">
+            <h2>Add Friend</h2>
+            <form method="post" action="{{ path('app_friend_search') }}">
+                <label>Friend's Email</label>
+                <div class="flex">
+                    <input type="email" name="email" required placeholder="email@example.com" style="margin-bottom: 0;">
+                    <button class="btn btn-primary">Add</button>
+                </div>
+            </form>
+        </div>
+        
+        {% if pending_requests|length > 0 %}
+        <div class="card" style="border-color: var(--primary);">
+            <h2>Pending Requests</h2>
+            {% for req in pending_requests %}
+                <div class="flex justify-between" style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
+                    <span>{{ req.requester.email }}</span>
+                    <div class="flex" style="gap: 0.5rem;">
+                        <form method="post" action="{{ path('app_friend_request_action', {id: req.id, action: 'accept'}) }}">
+                            <button class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Accept</button>
+                        </form>
+                        <form method="post" action="{{ path('app_friend_request_action', {id: req.id, action: 'reject'}) }}">
+                            <button class="btn btn-danger" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Reject</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <h2>Friends List</h2>
+    {% if friends is empty %}
+        <p class="text-muted">You haven't added any friends yet.</p>
+    {% else %}
+        <div class="grid">
+            {% for friend in friends %}
+                <div class="card flex justify-between">
+                    <div>
+                        <div style="font-weight: 600; font-size: 1.1rem;">{{ friend.email }}</div>
+                        <div class="text-muted" style="font-size: 0.9rem;">{{ friend.gifts|length }} gifts</div>
+                    </div>
+                    <a href="{{ path('app_friend_show', {id: friend.id}) }}" class="btn btn-outline">View Wishlist</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
