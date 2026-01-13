@@ -4,14 +4,14 @@
 
 {% block body %}
 <div class="flex justify-between mb-4">
-    <h1>My Wishlist</h1>
-    <a href="{{ path('app_gift_new') }}" class="btn btn-primary">+ Add Gift</a>
+    <h1>{{ 'gift.index.title'|trans }}</h1>
+    <a href="{{ path('app_gift_new') }}" class="btn btn-primary">{{ 'common.add_gift'|trans }}</a>
 </div>
 
 {% if gifts is empty %}
     <div class="card" style="text-align: center; padding: 4rem;">
-        <p class="text-muted" style="font-size: 1.2rem;">You haven't added any gifts yet.</p>
-        <a href="{{ path('app_gift_new') }}" class="btn btn-primary mt-4">Start your list</a>
+        <p class="text-muted" style="font-size: 1.2rem;">{{ 'gift.index.empty'|trans }}</p>
+        <a href="{{ path('app_gift_new') }}" class="btn btn-primary mt-4">{{ 'gift.index.start'|trans }}</a>
     </div>
 {% else %}
     <div class="grid">
@@ -28,12 +28,12 @@
                 
                 <div class="flex justify-between mt-4">
                     {% if gift.url %}
-                        <a href="{{ gift.url }}" target="_blank" class="btn btn-outline" style="font-size: 0.8rem;">View Link</a>
+                        <a href="{{ gift.url }}" target="_blank" class="btn btn-outline" style="font-size: 0.8rem;">{{ 'common.view_link'|trans }}</a>
                     {% endif %}
                     
-                    <form method="post" action="{{ path('app_gift_delete', {'id': gift.id}) }}" onsubmit="return confirm('Delete this gift?');">
+                    <form method="post" action="{{ path('app_gift_delete', {'id': gift.id}) }}" onsubmit="return confirm('{{ 'common.delete_confirm'|trans }}');">
                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ gift.id) }}">
-                        <button class="btn btn-danger" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Delete</button>
+                        <button class="btn btn-danger" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">{{ 'common.delete'|trans }}</button>
                     </form>
                 </div>
             </div>

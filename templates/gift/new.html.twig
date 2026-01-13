@@ -5,36 +5,36 @@
 {% block body %}
 <div style="max-width: 600px; margin: 0 auto;">
     <div class="card">
-        <h1>Add a Gift</h1>
+        <h1>{{ 'gift.new.title'|trans }}</h1>
         
         <div style="margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
-            <label>Auto-fill from URL</label>
+            <label>{{ 'gift.new.auto_fill'|trans }}</label>
             <div class="flex">
-                <input type="url" id="scrape-url" placeholder="Paste product URL here...">
-                <button type="button" id="scrape-btn" class="btn btn-outline">Auto-Fill</button>
+                <input type="url" id="scrape-url" placeholder="{{ 'gift.new.paste_placeholder'|trans }}">
+                <button type="button" id="scrape-btn" class="btn btn-outline">{{ 'gift.new.auto_fill_btn'|trans }}</button>
             </div>
-            <p class="text-muted" style="font-size: 0.85rem;">Paste a link and click Auto-Fill to fetch details automatically.</p>
+            <p class="text-muted" style="font-size: 0.85rem;">{{ 'gift.new.auto_fill_help'|trans }}</p>
         </div>
 
         <form method="post">
-            <label for="name">Name</label>
+            <label for="name">{{ 'gift.new.name'|trans }}</label>
             <input type="text" name="name" id="name" required>
 
-            <label for="description">Description (Optional)</label>
+            <label for="description">{{ 'gift.new.description'|trans }}</label>
             <textarea name="description" id="description" rows="3"></textarea>
 
-            <label for="url">Product URL</label>
+            <label for="url">{{ 'gift.new.url'|trans }}</label>
             <input type="url" name="url" id="url">
 
-            <label for="imageUrl">Image URL</label>
+            <label for="imageUrl">{{ 'gift.new.image_url'|trans }}</label>
             <input type="url" name="imageUrl" id="imageUrl">
             
-            <label for="priority">Priority (0-10)</label>
+            <label for="priority">{{ 'gift.new.priority'|trans }}</label>
             <input type="number" name="priority" id="priority" value="0" min="0" max="10">
 
             <div class="flex justify-between mt-4">
-                <a href="{{ path('app_gift_index') }}" class="btn btn-outline">Cancel</a>
-                <button class="btn btn-primary" type="submit">Save Gift</button>
+                <a href="{{ path('app_gift_index') }}" class="btn btn-outline">{{ 'common.cancel'|trans }}</a>
+                <button class="btn btn-primary" type="submit">{{ 'gift.new.save'|trans }}</button>
             </div>
         </form>
     </div>

@@ -1,0 +1,66 @@
+nav.my_list: Ma Liste
+nav.friends: Amis
+nav.logout: Déconnexion
+nav.login: Connexion
+nav.signup: Inscription
+common.add_gift: "+ Ajouter un cadeau"
+common.delete: Supprimer
+common.cancel: Annuler
+common.save: Enregistrer
+common.view_link: Voir le lien
+common.delete_confirm: Êtes-vous sûr de vouloir supprimer ce cadeau ?
+home.title: Bienvenue sur GiftList
+home.subtitle: Créez votre liste de souhaits parfaite
+home.description: Ajoutez des cadeaux depuis n'importe quel site, organisez votre liste et partagez-la avec vos amis et votre famille. Ne recevez plus jamais le mauvais cadeau.
+home.get_started: Commencer
+home.features.lists.title: 📝 Créez des listes
+home.features.lists.desc: Ajoutez des articles manuellement ou collez un lien pour remplir automatiquement les détails.
+home.features.share.title: 🤝 Partagez & Connectez
+home.features.share.desc: Connectez-vous avec vos amis et consultez leurs listes de souhaits instantanément.
+home.features.favorites.title: ⭐ Favoris
+home.features.favorites.desc: Marquez les articles que vous prévoyez d'acheter ou que vous adorez.
+gift.index.title: Ma Liste de Souhaits
+gift.index.empty: Vous n'avez pas encore ajouté de cadeaux.
+gift.index.start: Commencer votre liste
+gift.new.title: Ajouter un Cadeau
+gift.new.auto_fill: Remplissage auto depuis URL
+gift.new.paste_placeholder: Collez l'URL du produit ici...
+gift.new.auto_fill_btn: Remplissage Auto
+gift.new.auto_fill_help: Collez un lien et cliquez sur Remplissage Auto pour récupérer les détails automatiquement.
+gift.new.name: Nom
+gift.new.description: Description (Optionnel)
+gift.new.url: URL du Produit
+gift.new.image_url: URL de l'Image
+gift.new.priority: Priorité (0-10)
+gift.new.save: Enregistrer le Cadeau
+friend.index.title: Mes Amis
+friend.add.title: Ajouter un Ami
+friend.add.email_label: Email de l'ami
+friend.add.btn: Ajouter
+friend.pending.title: Demandes en Attente
+friend.action.accept: Accepter
+friend.action.reject: Rejeter
+friend.list.title: Liste d'Amis
+friend.list.empty: Vous n'avez pas encore ajouté d'amis.
+friend.list.gifts: cadeaux
+friend.list.view: Voir la Liste
+friend.show.back: ← Retour aux Amis
+friend.show.empty: Cet ami n'a pas encore ajouté de cadeaux.
+friend.show.star: Favori
+friend.show.unstar: Retirer Favori
+auth.login.title: Connexion
+auth.login.welcome: Bon retour
+auth.login.email: Email
+auth.login.password: Mot de passe
+auth.login.btn: Se connecter
+auth.login.no_account: Pas encore de compte ?
+auth.login.signup_link: S'inscrire
+auth.register.title: Inscription
+auth.register.create_account: Créer un compte
+auth.register.btn: S'inscrire
+auth.register.existing_account: Déjà un compte ?
+auth.register.login_link: Se connecter
+flash.friend.sent: Demande d'ami envoyée !
+flash.friend.exists: Demande déjà existante ou vous êtes déjà amis.
+flash.user_not_found: Utilisateur non trouvé.
+flash.friend.not_friend: Vous n'êtes pas amis avec cet utilisateur.

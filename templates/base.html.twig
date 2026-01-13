@@ -114,12 +114,12 @@
             <a href="{{ path('app_home') }}" class="logo">🎁 GiftList</a>
             <div class="nav-links">
                 {% if app.user %}
-                    <a href="{{ path('app_gift_index') }}" class="btn btn-outline">My List</a>
-                    <a href="{{ path('app_friend_index') }}" class="btn btn-outline">Friends</a>
-                    <a href="{{ path('app_logout') }}" class="btn btn-primary" style="background:#ef4444;">Logout</a>
+                    <a href="{{ path('app_gift_index') }}" class="btn btn-outline">{{ 'nav.my_list'|trans }}</a>
+                    <a href="{{ path('app_friend_index') }}" class="btn btn-outline">{{ 'nav.friends'|trans }}</a>
+                    <a href="{{ path('app_logout') }}" class="btn btn-primary" style="background:#ef4444;">{{ 'nav.logout'|trans }}</a>
                 {% else %}
-                    <a href="{{ path('app_login') }}" class="btn btn-outline">Login</a>
-                    <a href="{{ path('app_register') }}" class="btn btn-primary">Sign Up</a>
+                    <a href="{{ path('app_login') }}" class="btn btn-outline">{{ 'nav.login'|trans }}</a>
+                    <a href="{{ path('app_register') }}" class="btn btn-primary">{{ 'nav.signup'|trans }}</a>
                 {% endif %}
             </div>
         </nav>
@@ -128,7 +128,7 @@
             {% for label, messages in app.flashes %}
                 {% for message in messages %}
                     <div class="flash flash-{{ label }}">
-                        {{ message }}
+                        {{ message|trans }}
                     </div>
                 {% endfor %}
             {% endfor %}

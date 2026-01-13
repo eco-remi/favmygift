@@ -5,21 +5,21 @@
 {% block body %}
 <div style="max-width: 400px; margin: 4rem auto;">
     <div class="card">
-        <h1 style="text-align: center; margin-bottom: 2rem;">Create Account</h1>
+        <h1 style="text-align: center; margin-bottom: 2rem;">{{ 'auth.register.create_account'|trans }}</h1>
         
         <form method="post">
-            <label for="email">Email</label>
+            <label for="email">{{ 'auth.login.email'|trans }}</label>
             <input type="email" name="email" id="email" required>
 
-            <label for="password">Password</label>
+            <label for="password">{{ 'auth.login.password'|trans }}</label>
             <input type="password" name="password" id="password" required>
 
             <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: 1rem;">
-                Register
+                {{ 'auth.register.btn'|trans }}
             </button>
             
             <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">
-                Already have an account? <a href="{{ path('app_login') }}">Log in</a>
+                {{ 'auth.register.existing_account'|trans }} <a href="{{ path('app_login') }}">{{ 'auth.register.login_link'|trans }}</a>
             </p>
         </form>
     </div>

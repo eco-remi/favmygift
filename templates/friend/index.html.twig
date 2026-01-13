@@ -3,32 +3,32 @@
 {% block title %}My Friends{% endblock %}
 
 {% block body %}
-    <h1>My Friends</h1>
+    <h1>{{ 'friend.index.title'|trans }}</h1>
 
     <div class="grid" style="margin-bottom: 3rem;">
         <div class="card">
-            <h2>Add Friend</h2>
+            <h2>{{ 'friend.add.title'|trans }}</h2>
             <form method="post" action="{{ path('app_friend_search') }}">
-                <label>Friend's Email</label>
+                <label>{{ 'friend.add.email_label'|trans }}</label>
                 <div class="flex">
                     <input type="email" name="email" required placeholder="email@example.com" style="margin-bottom: 0;">
-                    <button class="btn btn-primary">Add</button>
+                    <button class="btn btn-primary">{{ 'friend.add.btn'|trans }}</button>
                 </div>
             </form>
         </div>
         
         {% if pending_requests|length > 0 %}
         <div class="card" style="border-color: var(--primary);">
-            <h2>Pending Requests</h2>
+            <h2>{{ 'friend.pending.title'|trans }}</h2>
             {% for req in pending_requests %}
                 <div class="flex justify-between" style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
                     <span>{{ req.requester.email }}</span>
                     <div class="flex" style="gap: 0.5rem;">
                         <form method="post" action="{{ path('app_friend_request_action', {id: req.id, action: 'accept'}) }}">
-                            <button class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Accept</button>
+                            <button class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">{{ 'friend.action.accept'|trans }}</button>
                         </form>
                         <form method="post" action="{{ path('app_friend_request_action', {id: req.id, action: 'reject'}) }}">
-                            <button class="btn btn-danger" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Reject</button>
+                            <button class="btn btn-danger" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">{{ 'friend.action.reject'|trans }}</button>
                         </form>
                     </div>
                 </div>
@@ -37,18 +37,18 @@
         {% endif %}
     </div>
 
-    <h2>Friends List</h2>
+    <h2>{{ 'friend.list.title'|trans }}</h2>
     {% if friends is empty %}
-        <p class="text-muted">You haven't added any friends yet.</p>
+        <p class="text-muted">{{ 'friend.list.empty'|trans }}</p>
     {% else %}
         <div class="grid">
             {% for friend in friends %}
                 <div class="card flex justify-between">
                     <div>
                         <div style="font-weight: 600; font-size: 1.1rem;">{{ friend.email }}</div>
-                        <div class="text-muted" style="font-size: 0.9rem;">{{ friend.gifts|length }} gifts</div>
+                        <div class="text-muted" style="font-size: 0.9rem;">{{ friend.gifts|length }} {{ 'friend.list.gifts'|trans }}</div>
                     </div>
-                    <a href="{{ path('app_friend_show', {id: friend.id}) }}" class="btn btn-outline">View Wishlist</a>
+                    <a href="{{ path('app_friend_show', {id: friend.id}) }}" class="btn btn-outline">{{ 'friend.list.view'|trans }}</a>
                 </div>
             {% endfor %}
         </div>

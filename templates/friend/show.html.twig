@@ -5,12 +5,12 @@
 {% block body %}
     <div class="flex justify-between mb-4">
         <h1>{{ friend.email }}'s Wishlist</h1>
-        <a href="{{ path('app_friend_index') }}" class="btn btn-outline">&larr; Back to Friends</a>
+        <a href="{{ path('app_friend_index') }}" class="btn btn-outline">{{ 'friend.show.back'|trans }}</a>
     </div>
 
     {% if gifts is empty %}
         <div class="card" style="text-align: center; padding: 4rem;">
-            <p class="text-muted">This friend hasn't added any gifts yet.</p>
+            <p class="text-muted">{{ 'friend.show.empty'|trans }}</p>
         </div>
     {% else %}
         <div class="grid">
@@ -33,16 +33,16 @@
                     
                     <div class="flex justify-between mt-4">
                         {% if gift.url %}
-                            <a href="{{ gift.url }}" target="_blank" class="btn btn-outline" style="font-size: 0.8rem;">View Link</a>
+                            <a href="{{ gift.url }}" target="_blank" class="btn btn-outline" style="font-size: 0.8rem;">{{ 'common.view_link'|trans }}</a>
                         {% else %}
                             <span></span>
                         {% endif %}
                         
                         <form method="post" action="{{ path('app_gift_favorite', {'id': gift.id}) }}">
                             {% if app.user in gift.favoritedBy %}
-                                <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; border-color: gold; color: gold;">Unstar</button>
+                                <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; border-color: gold; color: gold;">{{ 'friend.show.unstar'|trans }}</button>
                             {% else %}
-                                <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Star</button>
+                                <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">{{ 'friend.show.star'|trans }}</button>
                             {% endif %}
                         </form>
                     </div>
