@@ -84,3 +84,9 @@ eco.references.desc: Nous suivons les principes du Green IT et soutenons le coll
 eco.cta.title: Passez au vert
 eco.cta.desc: Vous souhaitez aussi réduire l'empreinte carbone de vos projets numériques ?
 eco.cta.btn: Contactez e-responsable
+admin.gifts: Cadeaux
+admin.relations: Amis
+admin.view_gifts: Voir liste
+admin.user_deleted: Utilisateur supprimé avec succès.
+admin.gift_deleted: Cadeau supprimé.
+admin.error.self_delete: Vous ne pouvez pas supprimer votre propre compte admin.

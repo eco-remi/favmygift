@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    <h1>Administration</h1>
+
+    <div class="card" style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="text-align: left; border-bottom: 2px solid var(--border);">
+                    <th style="padding: 1rem;">Email</th>
+                    <th style="padding: 1rem;">Roles</th>
+                    <th style="padding: 1rem; text-align: center;">{{ 'admin.gifts'|trans }}</th>
+                    <th style="padding: 1rem; text-align: center;">{{ 'admin.relations'|trans }}</th>
+                    <th style="padding: 1rem; text-align: right;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in users %}
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem;">{{ item.entity.email }}</td>
+                        <td style="padding: 1rem;">
+                            {% for role in item.entity.roles %}
+                                <span style="background: var(--surface); border: 1px solid var(--border); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.8rem;">{{ role }}</span>
+                            {% endfor %}
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">{{ item.giftCount }}</td>
+                        <td style="padding: 1rem; text-align: center;">{{ item.friendCount }}</td>
+                        <td style="padding: 1rem; text-align: right;">
+                            <div class="flex" style="justify-content: flex-end; gap: 0.5rem;">
+                                <a href="{{ path('app_admin_user_gifts', {id: item.entity.id}) }}" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.25rem 0.5rem;">{{ 'admin.view_gifts'|trans }}</a>
+                                
+                                {% if item.entity != app.user %}
+                                    <form method="post" action="{{ path('app_admin_user_delete', {id: item.entity.id}) }}" onsubmit="return confirm('{{ 'common.delete_confirm'|trans }}');" style="display:inline;">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ item.entity.id) }}">
+                                        <button class="btn btn-danger" style="font-size: 0.8rem; padding: 0.25rem 0.5rem;">{{ 'common.delete'|trans }}</button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
