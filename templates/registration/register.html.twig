@@ -24,4 +24,45 @@
         </form>
     </div>
 </div>
+
+<script>
+document.getElementById('email').addEventListener('blur', async function() {
+    const email = this.value;
+    const btn = document.querySelector('button[type="submit"]');
+    
+    // Clear previous error if any
+    const existingError = this.nextElementSibling;
+    if (existingError && existingError.classList.contains('flash-error')) {
+        existingError.remove();
+    }
+    btn.disabled = false;
+
+    if (!email) return;
+
+    try {
+        const response = await fetch('{{ path('app_check_email') }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: email })
+        });
+        
+        const data = await response.json();
+        
+        if (data.exists) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'flash flash-error';
+            errorDiv.style.marginTop = '0.5rem';
+            errorDiv.style.fontSize = '0.9rem';
+            errorDiv.textContent = "{{ 'auth.register.email_exists'|trans }}";
+            
+            this.parentNode.insertBefore(errorDiv, this.nextSibling);
+            btn.disabled = true;
+        }
+    } catch (e) {
+        console.error('Error checking email', e);
+    }
+});
+</script>
 {% endblock %}

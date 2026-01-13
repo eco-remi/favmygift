@@ -60,6 +60,7 @@ auth.register.create_account: Créer un compte
 auth.register.btn: S'inscrire
 auth.register.existing_account: Déjà un compte ?
 auth.register.login_link: Se connecter
+auth.register.email_exists: Cet email est déjà utilisé. Veuillez vous connecter ou utiliser une autre adresse.
 flash.friend.sent: Demande d'ami envoyée !
 flash.friend.exists: Demande déjà existante ou vous êtes déjà amis.
 flash.user_not_found: Utilisateur non trouvé.

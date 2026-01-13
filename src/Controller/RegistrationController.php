@@ -42,4 +42,17 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/register.html.twig');
     }
+
+    #[Route('/register/check-email', name: 'app_check_email', methods: ['POST'])]
+    public function checkEmail(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $email = $request->getPayload()->get('email');
+        if (!$email) {
+            return $this->json(['exists' => false]);
+        }
+
+        $user = $entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
+
+        return $this->json(['exists' => null !== $user]);
+    }
 }
