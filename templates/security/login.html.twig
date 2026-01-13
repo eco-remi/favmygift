@@ -20,6 +20,12 @@
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
+            {# Honeypot #}
+            <div style="display:none;">
+                <label>Ne pas remplir / Do not fill</label>
+                <input type="text" name="_hp_login" tabindex="-1" autocomplete="off">
+            </div>
+
             <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: 1rem;">
                 {{ 'auth.login.btn'|trans }}
             </button>

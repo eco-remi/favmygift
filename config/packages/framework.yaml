@@ -7,6 +7,10 @@ framework:
 
     #esi: true
     #fragments: true
+    php_errors:
+        log: true
+
+    lock: 'flock'
 
 when@test:
     framework:

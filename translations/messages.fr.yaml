@@ -61,6 +61,10 @@ auth.register.btn: S'inscrire
 auth.register.existing_account: Déjà un compte ?
 auth.register.login_link: Se connecter
 auth.register.email_exists: Cet email est déjà utilisé. Veuillez vous connecter ou utiliser une autre adresse.
+security.captcha.label: Question de sécurité
+security.captcha.help: Pour vérifier que vous êtes humain, calculez :
+security.captcha.error: Mauvaise réponse. Essayez encore.
+security.rate_limit: Trop de tentatives. Veuillez réessayer plus tard.
 flash.friend.sent: Demande d'ami envoyée !
 flash.friend.exists: Demande déjà existante ou vous êtes déjà amis.
 flash.user_not_found: Utilisateur non trouvé.

@@ -14,6 +14,15 @@
             <label for="password">{{ 'auth.login.password'|trans }}</label>
             <input type="password" name="password" id="password" required>
 
+            <label for="captcha">{{ 'security.captcha.help'|trans }} <strong>{{ captcha_question }}</strong> ?</label>
+            <input type="number" name="captcha" id="captcha" class="form-control" required style="width: 80px;">
+
+            {# Honeypot field #}
+            <div style="display:none;">
+                <label>Ne pas remplir / Do not fill</label>
+                <input type="text" name="_hp_email" tabindex="-1" autocomplete="off">
+            </div>
+
             <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: 1rem;">
                 {{ 'auth.register.btn'|trans }}
             </button>
