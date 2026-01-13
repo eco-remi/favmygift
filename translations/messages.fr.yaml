@@ -64,3 +64,18 @@ flash.friend.sent: Demande d'ami envoyée !
 flash.friend.exists: Demande déjà existante ou vous êtes déjà amis.
 flash.user_not_found: Utilisateur non trouvé.
 flash.friend.not_friend: Vous n'êtes pas amis avec cet utilisateur.
+eco.badge: Éco-conçu par e-responsable
+eco.title: Engagement Éco-responsable
+eco.desc: Cette plateforme est conçue pour minimiser son empreinte carbone. Architecture légère, code optimisé, aucune ressource superflue.
+eco.learn_more: En savoir plus
+eco.page.title: Notre Engagement Éco-responsable
+eco.page.subtitle: Pour un numérique plus sobre et respectueux.
+eco.tracking.title: Zéro Tracking
+eco.tracking.desc: Nous respectons votre vie privée. Aucun cookie publicitaire, aucun traceur d'analyse comportementale. Juste le strict nécessaire pour faire fonctionner le service.
+eco.resources.title: Sobriété Numérique
+eco.resources.desc: Ce site est développé pour consommer le minimum d'énergie. Pas de framework lourd, pas de scripts superflus. Une architecture optimisée pour durer.
+eco.references.title: Nos Références
+eco.references.desc: Nous suivons les principes du Green IT et soutenons le collectif E-CO pour un web durable.
+eco.cta.title: Passez au vert
+eco.cta.desc: Vous souhaitez aussi réduire l'empreinte carbone de vos projets numériques ?
+eco.cta.btn: Contactez e-responsable

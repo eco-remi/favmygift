@@ -29,4 +29,34 @@
         </div>
     </div>
 </div>
+    <div style="margin-top: 5rem; padding: 2rem; background: rgba(16, 185, 129, 0.1); border-radius: 1rem; border: 1px solid var(--success); text-align: center;">
+        <span style="background: var(--success); color: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">{{ 'eco.badge'|trans }}</span>
+        <h2 style="margin-top: 1rem; color: #d1fae5;">{{ 'eco.title'|trans }}</h2>
+        <p style="color: #6ee7b7; max-width: 600px; margin: 0 auto;">
+            {{ 'eco.desc'|trans }}
+        </p>
+        <a href="{{ path('app_eco') }}" style="display: inline-block; margin-top: 1rem; color: #d1fae5; text-decoration: underline;">{{ 'eco.learn_more'|trans }}</a>
+    </div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GiftList",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "description": "Application de liste de cadeaux collaborative et éco-conçue.",
+  "author": {
+    "@type": "Organization",
+    "name": "e-responsable",
+    "url": "https://e-responsable.com"
+  }
+}
+</script>
 {% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'eco.page.title'|trans }}{% endblock %}
+
+{% block body %}
+<div style="max-width: 800px; margin: 4rem auto;">
+    <div style="text-align: center; margin-bottom: 4rem;">
+        <span style="font-size: 4rem;">🌱</span>
+        <h1 style="font-size: 2.5rem; margin: 1rem 0;">{{ 'eco.page.title'|trans }}</h1>
+        <p class="text-muted" style="font-size: 1.25rem;">{{ 'eco.page.subtitle'|trans }}</p>
+    </div>
+
+    <div class="grid" style="margin-bottom: 4rem;">
+        <div class="card">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🛡️</div>
+            <h3>{{ 'eco.tracking.title'|trans }}</h3>
+            <p class="text-muted">{{ 'eco.tracking.desc'|trans }}</p>
+        </div>
+        <div class="card">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">⚡</div>
+            <h3>{{ 'eco.resources.title'|trans }}</h3>
+            <p class="text-muted">{{ 'eco.resources.desc'|trans }}</p>
+        </div>
+        <div class="card">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">📚</div>
+            <h3>{{ 'eco.references.title'|trans }}</h3>
+            <p class="text-muted">{{ 'eco.references.desc'|trans }}</p>
+        </div>
+    </div>
+
+    <div class="card" style="text-align: center; background: linear-gradient(to bottom right, var(--surface), rgba(16, 185, 129, 0.1)); border-color: var(--success);">
+        <h2>{{ 'eco.cta.title'|trans }}</h2>
+        <p class="text-muted" style="margin-bottom: 2rem;">{{ 'eco.cta.desc'|trans }}</p>
+        <a href="https://e-responsable.com" target="_blank" class="btn btn-primary" style="background: var(--success); border-color: var(--success); font-size: 1.1rem; padding: 0.75rem 2rem;">
+            {{ 'eco.cta.btn'|trans }}
+        </a>
+    </div>
+</div>
+{% endblock %}
