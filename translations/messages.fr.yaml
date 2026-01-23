@@ -9,8 +9,8 @@ common.cancel: Annuler
 common.save: Enregistrer
 common.view_link: Voir le lien
 common.delete_confirm: Êtes-vous sûr de vouloir supprimer ce cadeau ?
-home.title: Bienvenue sur GiftList
-home.subtitle: Créez votre liste de souhaits parfaite
+home.title: Bienvenue sur FavMyGift
+home.subtitle: Créez votre liste de cadeaux facilement
 home.description: Ajoutez des cadeaux depuis n'importe quel site, organisez votre liste et partagez-la avec vos amis et votre famille. Ne recevez plus jamais le mauvais cadeau.
 home.get_started: Commencer
 home.features.lists.title: 📝 Créez des listes
